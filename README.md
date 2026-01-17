@@ -3,9 +3,11 @@
 [![npm version](https://img.shields.io/npm/v/react-social-embeds.svg)](https://www.npmjs.com/package/react-social-embeds)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
+
+
 Unified React components for embedding social media and streaming content. One component per platform with consistent styling, theming, and TypeScript support.
 
-**[📺 Live Demo](https://zzyil.github.io/react-embeds/)** | **[📦 npm](https://www.npmjs.com/package/react-social-embeds)**
+**[▶️ Live Demo](https://zzyil.github.io/react-embeds/)** | **[📦 npm](https://www.npmjs.com/package/react-social-embeds)** | **[⛓️‍💥 GitHub Repo](https://github.com/zzyil/react-embeds)** | **[Follow on X](https://x.com/listentovv)**  
 
 ## Installation
 
