@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { CardLayout, CardLayoutProvider, EmbedCard, RedditEmbed, XEmbed, BlueskyEmbed, MastodonEmbed, ThreadsEmbed, TruthSocialEmbed, LinkedInEmbed, BilibiliEmbed, InstagramEmbed, TikTokEmbed, YouTubeEmbed, RumbleEmbed, DailymotionEmbed, OdyseeEmbed, ArchiveOrgEmbed, KickEmbed, TwitchEmbed, TumblrEmbed, PinterestEmbed, SpotifyEmbed, AppleMusicEmbed, DeezerEmbed, TidalEmbed, SoundCloudEmbed, ApplePodcastsEmbed, FacebookEmbed, TelegramEmbed, SnapchatEmbed, PlatformIcon } from "react-embeds";
+import { CardLayout, CardLayoutProvider, EmbedCard, RedditEmbed, XEmbed, BlueskyEmbed, MastodonEmbed, ThreadsEmbed, TruthSocialEmbed, LinkedInEmbed, BilibiliEmbed, InstagramEmbed, TikTokEmbed, YouTubeEmbed, RumbleEmbed, DailymotionEmbed, OdyseeEmbed, ArchiveOrgEmbed, KickEmbed, TwitchEmbed, TumblrEmbed, PinterestEmbed, SpotifyEmbed, AppleMusicEmbed, DeezerEmbed, TidalEmbed, SoundCloudEmbed, ApplePodcastsEmbed, FacebookEmbed, TelegramEmbed, PlatformIcon } from "react-embeds";
 import {
   COMMON_PROP_KEYS,
   DEFAULT_CTA_LABELS,
@@ -24,7 +24,6 @@ const TRUTH_SOCIAL_EXAMPLE_URL = "https://truthsocial.com/@realDonaldTrump/11588
 const LINKEDIN_EXAMPLE_URL = "https://www.linkedin.com/posts/naturenergy_energiewende-wasserkraft-aemkostrom-activity-7416739784716623872-xSTU/";
 const BILIBILI_EXAMPLE_URL = "https://www.bilibili.com/video/av20204904/";
 const TELEGRAM_EXAMPLE_URL = "https://t.me/telegram/83";
-const SNAPCHAT_EXAMPLE_URL = "https://www.snapchat.com/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYdnRyb2diaXFkAZs2ZevKAZs2Zeu1AAAAAQ?ref=web_spotlight";
 const INSTAGRAM_EXAMPLE_URL = "https://www.instagram.com/reels/DLcih1IJg9Q/";
 const TIKTOK_EXAMPLE_URL = "https://www.tiktok.com/@wrldoftshirt/video/7528110250075950358";
 const FACEBOOK_EXAMPLE_URL = "https://www.facebook.com/watch/?v=1206521130975911";
@@ -59,7 +58,7 @@ const SOUNDCLOUD_PLAYLIST_URL = "https://soundcloud.com/eddie-odame/sets/dj-mixe
 const APPLE_PODCAST_SHOW_URL = "https://podcasts.apple.com/us/podcast/serial/id917918570";
 const APPLE_PODCAST_EPISODE_URL = "https://podcasts.apple.com/us/podcast/were-playing-for-keeps-in-2026/id558364221?i=1000743945204";
 
-type Platform = "reddit" | "x" | "bluesky" | "mastodon" | "threads" | "truthSocial" | "linkedin" | "bilibili" | "instagram" | "tiktok" | "facebook" | "youtube" | "rumble" | "dailymotion" | "odysee" | "archive" | "kick" | "twitch" | "tumblr" | "pinterest" | "spotify" | "appleMusic" | "deezer" | "tidal" | "soundcloud" | "applePodcasts" | "telegram" | "snapchat";
+type Platform = "reddit" | "x" | "bluesky" | "mastodon" | "threads" | "truthSocial" | "linkedin" | "bilibili" | "instagram" | "tiktok" | "facebook" | "youtube" | "rumble" | "dailymotion" | "odysee" | "archive" | "kick" | "twitch" | "tumblr" | "pinterest" | "spotify" | "appleMusic" | "deezer" | "tidal" | "soundcloud" | "applePodcasts" | "telegram";
 type LayoutOption = "default" | CardLayout;
 
 const PLATFORM_CONFIG = [
@@ -89,8 +88,7 @@ const PLATFORM_CONFIG = [
   { id: "deezer", label: "Deezer", color: "#ef5466" },
   { id: "tidal", label: "Tidal", color: "#000000" },
   { id: "soundcloud", label: "SoundCloud", color: "#ff5500" },
-  { id: "applePodcasts", label: "Apple Podcasts", color: "#a24bdc" },
-  { id: "snapchat", label: "Snapchat", color: "#FFFC00" }
+  { id: "applePodcasts", label: "Apple Podcasts", color: "#a24bdc" }
 ] as const;
 
 const renderPlatformIcon = (platformId: Platform, iconColor: string) => (
@@ -208,11 +206,6 @@ export default function Home() {
   const [telegramEmbedAlignment, setTelegramEmbedAlignment] = useState<"left" | "center" | "right">("center");
   const [telegramConstrainWidth, setTelegramConstrainWidth] = useState(false);
 
-  // Snapchat-specific options
-  const [snapchatCtaAlignment, setSnapchatCtaAlignment] = useState<"left" | "center" | "right">("left");
-  const [snapchatEmbedAlignment, setSnapchatEmbedAlignment] = useState<"left" | "center" | "right">("center");
-  const [snapchatConstrainWidth, setSnapchatConstrainWidth] = useState(false);
-
   // Dailymotion-specific options
   const [useDailymotionClickToPlay, setUseDailymotionClickToPlay] = useState(true);
   const [dailymotionBodyMaxLength, setDailymotionBodyMaxLength] = useState(100);
@@ -263,7 +256,6 @@ export default function Home() {
   const isTidal = platform === "tidal";
   const isSoundCloud = platform === "soundcloud";
   const isApplePodcasts = platform === "applePodcasts";
-  const isSnapchat = platform === "snapchat";
   const isDailymotion = platform === "dailymotion";
   const activeCtaLabel = ctaLabels[platform];
   const resolvedCtaLabel = activeCtaLabel?.trim();
@@ -620,19 +612,6 @@ export default function Home() {
           ["constrainWidthByViewport", instagramConstrainWidth],
           ["constrainWidthByEmbed", instagramConstrainCardWidth],
           ...baseCtaProps
-        ];
-        break;
-      case "snapchat":
-        componentName = "SnapchatEmbed";
-        props = [
-          ["url", activeUrl],
-          ["ctaAlignment", showCTA ? snapchatCtaAlignment : undefined],
-          ["embedAlignment", snapchatEmbedAlignment],
-          ["constrainWidthByEmbed", snapchatConstrainWidth],
-          ...buildCommonPropEntries(
-            commonValues,
-            ["theme", "width", "maxWidth", "showBranding", "disableCard", "showCTA"] as const
-          )
         ];
         break;
       default:
@@ -1381,29 +1360,6 @@ export default function Home() {
           `  constrainWidthByEmbed={false}`,
           `/>`
         ].join("\n");
-      case "snapchat":
-        return [
-          `import { SnapchatEmbed, CardLayoutProvider } from "react-embeds";`,
-          ``,
-          `<SnapchatEmbed`,
-          `  url="$url"`,
-          `  width="100%"`,
-          `  height={650}`,
-          `  scriptLoad={true}`,
-          `  disableCard={false}`,
-          `  showCTA={true}`,
-          `  ctaLabel="View on Snapchat"`,
-          `  ctaLabelIcon={true}`,
-          `  ctaLabelIconPosition="before"`,
-          `  ctaUsePlatformColor={false}`,
-          `  ctaUsePlatformIconColor={false}`,
-          `  ctaAlignment="left"`,
-          `  embedAlignment="center"`,
-          `  showBranding={true}`,
-          `  constrainWidthByEmbed={false}`,
-          `  theme="light"`,
-          `/>`
-        ].join("\n");
       default:
         return "";
     }
@@ -1436,8 +1392,7 @@ export default function Home() {
       tidal: { name: "TidalEmbed", url: TIDAL_TRACK_URL, importLines: [`import { TidalEmbed, CardLayoutProvider } from "react-embeds";`] },
       soundcloud: { name: "SoundCloudEmbed", url: SOUNDCLOUD_TRACK_URL, importLines: [`import { SoundCloudEmbed, CardLayoutProvider } from "react-embeds";`] },
       applePodcasts: { name: "ApplePodcastsEmbed", url: APPLE_PODCAST_EPISODE_URL, importLines: [`import { ApplePodcastsEmbed, CardLayoutProvider } from "react-embeds";`] },
-      telegram: { name: "TelegramEmbed", url: TELEGRAM_EXAMPLE_URL, importLines: [`import { TelegramEmbed, CardLayoutProvider } from "react-embeds";`] },
-      snapchat: { name: "SnapchatEmbed", url: SNAPCHAT_EXAMPLE_URL, importLines: [`import { SnapchatEmbed, CardLayoutProvider } from "react-embeds";`] }
+      telegram: { name: "TelegramEmbed", url: TELEGRAM_EXAMPLE_URL, importLines: [`import { TelegramEmbed, CardLayoutProvider } from "react-embeds";`] }
     };
     const info = componentMap[platform];
     const usageLines = [
@@ -1524,8 +1479,7 @@ export default function Home() {
       TidalEmbed: "tidal",
       SoundCloudEmbed: "soundcloud",
       ApplePodcastsEmbed: "applePodcasts",
-      TelegramEmbed: "telegram",
-      SnapchatEmbed: "snapchat"
+      TelegramEmbed: "telegram"
     };
 
     const { globalLayout, componentName, props } = parseUsageSnippet(text);
@@ -1658,13 +1612,11 @@ export default function Home() {
     }
     if (typeof props.embedAlignment === "string") {
       setTelegramEmbedAlignment(props.embedAlignment as "center" | "left" | "right");
-      setSnapchatEmbedAlignment(props.embedAlignment as "center" | "left" | "right");
     }
     if (typeof props.ctaAlignment === "string") {
       setThreadsCtaAlignment(props.ctaAlignment as "left" | "center" | "right");
       setTruthSocialCtaAlignment(props.ctaAlignment as "left" | "center" | "right");
       setTelegramCtaAlignment(props.ctaAlignment as "left" | "center" | "right");
-      setSnapchatCtaAlignment(props.ctaAlignment as "left" | "center" | "right");
     }
 
     if (typeof props.renderMode === "string") {
@@ -1746,7 +1698,6 @@ export default function Home() {
       setFacebookConstrainCardWidth(props.constrainWidthByEmbed);
       setBilibiliConstrainWidth(props.constrainWidthByEmbed);
       setTelegramConstrainWidth(props.constrainWidthByEmbed);
-      setSnapchatConstrainWidth(props.constrainWidthByEmbed);
     }
     if (typeof props.controls === "boolean") setTikTokControls(props.controls);
     if (typeof props.loop === "boolean") setTikTokLoop(props.loop);
@@ -1865,24 +1816,13 @@ export default function Home() {
     } else if (newPlatform === "applePodcasts") {
       setUrl(APPLE_PODCAST_EPISODE_URL);
       setActiveUrl(APPLE_PODCAST_EPISODE_URL);
-    } else if (newPlatform === "snapchat") {
-      setUrl(SNAPCHAT_EXAMPLE_URL);
-      setActiveUrl(SNAPCHAT_EXAMPLE_URL);
-      setWidth("100%");
-      setMaxWidth("100%");
     } else { // instagram
       setUrl(INSTAGRAM_EXAMPLE_URL);
       setActiveUrl(INSTAGRAM_EXAMPLE_URL);
       setMaxWidth("100%");
     }
 
-    // Reset maxWidth for non-Snapchat platforms (except Instagram which falls through to else above, wait)
-    // Actually, I need to check if I should reset maxWidth for ALL others or just rely on manual change?
-    // Current code doesn't reset maxWidth for others.
-    // I should probably reset it to "100%" for all others to be clean.
-  if (newPlatform !== "snapchat") {
-      setMaxWidth("100%");
-    }
+    setMaxWidth("100%");
   };
 
   const previewInner = (
@@ -2460,26 +2400,7 @@ export default function Home() {
         constrainWidthByEmbed={instagramConstrainCardWidth}
         cardLayout={resolvedCardLayout}
       />
-    ) : (
-      <SnapchatEmbed
-        url={activeUrl}
-        width={width}
-        maxWidth={maxWidth}
-        disableCard={disableCard}
-        showCTA={showCTA}
-        ctaLabel={resolvedCtaLabel}
-        ctaLabelIcon={activeCtaLabelIcon}
-        ctaLabelIconPosition={activeCtaLabelIconPosition}
-        ctaUsePlatformColor={activeCtaUsePlatformColor}
-        ctaUsePlatformIconColor={activeCtaUsePlatformIconColor}
-        ctaAlignment={showCTA ? snapchatCtaAlignment : undefined}
-        theme={darkMode ? "dark" : "light"}
-        embedAlignment={snapchatEmbedAlignment}
-        showBranding={showBranding}
-        constrainWidthByEmbed={snapchatConstrainWidth}
-        cardLayout={resolvedCardLayout}
-      />
-    )
+    ) : null
   );
 
   return (
@@ -2673,7 +2594,7 @@ export default function Home() {
           })}
         </div>
 
-        <h2>Try {platform === "reddit" ? "a Reddit" : platform === "x" ? "an X" : platform === "bluesky" ? "a Bluesky" : platform === "mastodon" ? "a Mastodon" : platform === "threads" ? "a Threads" : platform === "truthSocial" ? "a Truth Social" : platform === "telegram" ? "a Telegram" : platform === "linkedin" ? "a LinkedIn" : platform === "bilibili" ? "a Bilibili" : platform === "tiktok" ? "a TikTok" : platform === "facebook" ? "a Facebook" : platform === "youtube" ? "a YouTube" : platform === "rumble" ? "a Rumble" : platform === "dailymotion" ? "a Dailymotion" : platform === "odysee" ? "an Odysee" : platform === "archive" ? "an Archive.org" : platform === "kick" ? "a Kick" : platform === "twitch" ? "a Twitch" : platform === "tumblr" ? "a Tumblr" : platform === "pinterest" ? "a Pinterest" : platform === "spotify" ? "a Spotify" : platform === "appleMusic" ? "an Apple Music" : platform === "deezer" ? "a Deezer" : platform === "tidal" ? "a Tidal" : platform === "soundcloud" ? "a SoundCloud" : platform === "applePodcasts" ? "an Apple Podcasts" : platform === "snapchat" ? "a Snapchat" : "an Instagram"} URL</h2>
+        <h2>Try {platform === "reddit" ? "a Reddit" : platform === "x" ? "an X" : platform === "bluesky" ? "a Bluesky" : platform === "mastodon" ? "a Mastodon" : platform === "threads" ? "a Threads" : platform === "truthSocial" ? "a Truth Social" : platform === "telegram" ? "a Telegram" : platform === "linkedin" ? "a LinkedIn" : platform === "bilibili" ? "a Bilibili" : platform === "tiktok" ? "a TikTok" : platform === "facebook" ? "a Facebook" : platform === "youtube" ? "a YouTube" : platform === "rumble" ? "a Rumble" : platform === "dailymotion" ? "a Dailymotion" : platform === "odysee" ? "an Odysee" : platform === "archive" ? "an Archive.org" : platform === "kick" ? "a Kick" : platform === "twitch" ? "a Twitch" : platform === "tumblr" ? "a Tumblr" : platform === "pinterest" ? "a Pinterest" : platform === "spotify" ? "a Spotify" : platform === "appleMusic" ? "an Apple Music" : platform === "deezer" ? "a Deezer" : platform === "tidal" ? "a Tidal" : platform === "soundcloud" ? "a SoundCloud" : platform === "applePodcasts" ? "an Apple Podcasts" : "an Instagram"} URL</h2>
         <div className="controls">
           <input
             value={url}
@@ -2705,8 +2626,7 @@ export default function Home() {
                                                             platform === "tidal" ? "Paste a Tidal track/album/playlist URL" :
                                                               platform === "soundcloud" ? "Paste a SoundCloud track/playlist URL" :
                                                                 platform === "applePodcasts" ? "Paste an Apple Podcasts show/episode URL" :
-                                                                  platform === "snapchat" ? "Paste a Snapchat Lens/Spotlight URL" :
-                                                                    "Paste an Instagram reel/post URL"
+                                                                  "Paste an Instagram reel/post URL"
             }
           />
           <button type="button" onClick={() => setActiveUrl(previewUrl)}>Load</button>
@@ -2735,10 +2655,6 @@ export default function Home() {
                 setUrl(TELEGRAM_EXAMPLE_URL);
                 setActiveUrl(TELEGRAM_EXAMPLE_URL);
                 setWidth("700px");
-              } else if (platform === "snapchat") {
-                setUrl(SNAPCHAT_EXAMPLE_URL);
-                setActiveUrl(SNAPCHAT_EXAMPLE_URL);
-                setWidth(350); // Vertical layout default
               } else if (platform === "linkedin") {
                 setUrl(LINKEDIN_EXAMPLE_URL);
                 setActiveUrl(LINKEDIN_EXAMPLE_URL);
@@ -3018,7 +2934,7 @@ export default function Home() {
           border: "1px solid var(--border)"
         }}>
           {/* Common options */}
-          {!isMastodon && !isThreads && platform !== "truthSocial" && platform !== "facebook" && platform !== "instagram" && !isTelegram && !isLinkedIn && !isBilibili && !isSpotify && !isAppleMusic && !isDeezer && !isTidal && !isSoundCloud && !isApplePodcasts && !isSnapchat && platform !== "tiktok" && platform !== "x" && platform !== "twitch" && (
+          {!isMastodon && !isThreads && platform !== "truthSocial" && platform !== "facebook" && platform !== "instagram" && !isTelegram && !isLinkedIn && !isBilibili && !isSpotify && !isAppleMusic && !isDeezer && !isTidal && !isSoundCloud && !isApplePodcasts && platform !== "tiktok" && platform !== "x" && platform !== "twitch" && (
             <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
               <input type="checkbox" checked={showAuthor} onChange={(e) => setShowAuthor(e.target.checked)} />
               <span>Show Author</span>
@@ -3030,19 +2946,19 @@ export default function Home() {
               <span>Show Handle</span>
             </label>
           )}
-          {!isMastodon && !isThreads && platform !== "truthSocial" && platform !== "facebook" && platform !== "instagram" && !isTelegram && !isLinkedIn && !isBilibili && !isSpotify && !isAppleMusic && !isDeezer && !isTidal && !isSoundCloud && !isApplePodcasts && !isSnapchat && !isDailymotion && platform !== "pinterest" && platform !== "tiktok" && platform !== "x" && platform !== "twitch" && (
+          {!isMastodon && !isThreads && platform !== "truthSocial" && platform !== "facebook" && platform !== "instagram" && !isTelegram && !isLinkedIn && !isBilibili && !isSpotify && !isAppleMusic && !isDeezer && !isTidal && !isSoundCloud && !isApplePodcasts && !isDailymotion && platform !== "pinterest" && platform !== "tiktok" && platform !== "x" && platform !== "twitch" && (
             <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
               <input type="checkbox" checked={showDate} onChange={(e) => setShowDate(e.target.checked)} />
               <span>Show Date</span>
             </label>
           )}
-          {!isMastodon && !isThreads && platform !== "truthSocial" && platform !== "facebook" && platform !== "instagram" && !isTelegram && !isLinkedIn && !isBilibili && !isSpotify && !isAppleMusic && !isDeezer && !isTidal && !isSoundCloud && !isApplePodcasts && !isSnapchat && platform !== "tiktok" && platform !== "x" && platform !== "youtube" && platform !== "twitch" && (
+          {!isMastodon && !isThreads && platform !== "truthSocial" && platform !== "facebook" && platform !== "instagram" && !isTelegram && !isLinkedIn && !isBilibili && !isSpotify && !isAppleMusic && !isDeezer && !isTidal && !isSoundCloud && !isApplePodcasts && platform !== "tiktok" && platform !== "x" && platform !== "youtube" && platform !== "twitch" && (
             <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
               <input type="checkbox" checked={showBody} onChange={(e) => setShowBody(e.target.checked)} />
               <span>Show Body/Description</span>
             </label>
           )}
-          {!isMastodon && !isThreads && platform !== "truthSocial" && platform !== "facebook" && platform !== "instagram" && !isTelegram && !isLinkedIn && !isBilibili && !isSpotify && !isAppleMusic && !isDeezer && !isTidal && !isSoundCloud && !isApplePodcasts && !isSnapchat && platform !== "tiktok" && platform !== "x" && platform !== "twitch" && (
+          {!isMastodon && !isThreads && platform !== "truthSocial" && platform !== "facebook" && platform !== "instagram" && !isTelegram && !isLinkedIn && !isBilibili && !isSpotify && !isAppleMusic && !isDeezer && !isTidal && !isSoundCloud && !isApplePodcasts && platform !== "tiktok" && platform !== "x" && platform !== "twitch" && (
             <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
               <input type="checkbox" checked={showMedia} onChange={(e) => setShowMedia(e.target.checked)} />
               <span>Show Media/Content</span>
@@ -3318,48 +3234,6 @@ export default function Home() {
               <span>Disable Card Style (Flush)</span>
             </label>
           )}
-
-          {/* Snapchat-specific options */}
-          {
-            platform === "snapchat" && (
-              <>
-                <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
-                  <input
-                    type="checkbox"
-                    checked={snapchatConstrainWidth}
-                    onChange={(e) => setSnapchatConstrainWidth(e.target.checked)}
-                  />
-                  <span>Limit to Embed Width</span>
-                </label>
-                {showCTA && (
-                  <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <span>CTA Alignment:</span>
-                    <select
-                      value={snapchatCtaAlignment}
-                      onChange={(e) => setSnapchatCtaAlignment(e.target.value as "left" | "center" | "right")}
-                      style={{ padding: "4px 8px", borderRadius: 4, border: "1px solid #ccc" }}
-                    >
-                      <option value="left">Left</option>
-                      <option value="center">Center</option>
-                      <option value="right">Right</option>
-                    </select>
-                  </label>
-                )}
-                <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span>Embed Alignment:</span>
-                  <select
-                    value={snapchatEmbedAlignment}
-                    onChange={(e) => setSnapchatEmbedAlignment(e.target.value as "left" | "center" | "right")}
-                    style={{ padding: "4px 8px", borderRadius: 4, border: "1px solid #ccc" }}
-                  >
-                    <option value="left">Left</option>
-                    <option value="center">Center</option>
-                    <option value="right">Right</option>
-                  </select>
-                </label>
-              </>
-            )
-          }
 
           {/* Reddit-specific options */}
           {platform === "reddit" && (

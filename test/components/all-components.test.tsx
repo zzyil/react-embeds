@@ -187,7 +187,6 @@ import { PlatformBranding } from "../../src/components/PlatformBranding";
 import { PlatformIcon } from "../../src/components/PlatformIcons";
 import { RedditEmbed } from "../../src/components/RedditEmbed";
 import { RumbleEmbed } from "../../src/components/RumbleEmbed";
-import { SnapchatEmbed } from "../../src/components/SnapchatEmbed";
 import { SoundCloudEmbed } from "../../src/components/SoundCloudEmbed";
 import { SpotifyEmbed } from "../../src/components/SpotifyEmbed";
 import { TelegramEmbed } from "../../src/components/TelegramEmbed";
@@ -449,10 +448,6 @@ describe("components", () => {
 
   it("renders RumbleEmbed", async () => {
     await renderAndExpect(<RumbleEmbed url="https://rumble.com/embed/vb7jz7/?pub=4" />);
-  });
-
-  it("renders SnapchatEmbed", async () => {
-    await renderAndExpect(<SnapchatEmbed url="https://www.snapchat.com/discover/story/123" />);
   });
 
   it("renders SoundCloudEmbed", async () => {

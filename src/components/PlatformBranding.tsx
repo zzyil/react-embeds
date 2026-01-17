@@ -31,8 +31,7 @@ export const PROVIDER_TO_PLATFORM: Record<string, PlatformIconName> = {
   deezer: "deezer",
   tidal: "tidal",
   soundcloud: "soundcloud",
-  "apple podcasts": "applePodcasts",
-  snapchat: "snapchat"
+  "apple podcasts": "applePodcasts"
 };
 
 export const PLATFORM_COLORS: Record<PlatformIconName, string> = {
@@ -62,8 +61,7 @@ export const PLATFORM_COLORS: Record<PlatformIconName, string> = {
   deezer: "#ef5466",
   tidal: "#000000",
   soundcloud: "#ff5500",
-  applePodcasts: "#a24bdc",
-  snapchat: "#FFFC00"
+  applePodcasts: "#a24bdc"
 };
 
 export type PlatformBrandingProps = {

@@ -957,10 +957,6 @@ var PLATFORM_ICON_PATHS = {
   applePodcasts: {
     viewBox: "0 0 24 24",
     path: "M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-2.096 1.261-2.336 1.261-.088 0-.096-.091-.056-.46.072-.592.144-.715.48-.856.536-.224 1.448-.874 2.008-1.435a7.644 7.644 0 002.008-3.536c.208-.824.184-2.656-.048-3.504-.728-2.696-2.928-4.792-5.624-5.352-.784-.16-2.208-.16-3 0-2.728.56-4.984 2.76-5.672 5.528-.184.752-.184 2.584 0 3.336.456 1.832 1.64 3.512 3.192 4.512.304.2.672.408.824.472.336.144.408.264.472.856.04.36.03.464-.056.464-.056 0-.464-.176-.896-.384l-.04-.03c-2.472-1.216-4.056-3.274-4.632-6.012-.144-.706-.168-2.392-.03-3.04.36-1.74 1.048-3.1 2.192-4.304 1.648-1.737 3.768-2.656 6.128-2.656zm.134 2.81c.409.004.803.04 1.106.106 2.784.62 4.76 3.408 4.376 6.174-.152 1.114-.536 2.03-1.216 2.88-.336.43-1.152 1.15-1.296 1.15-.023 0-.048-.272-.048-.603v-.605l.416-.496c1.568-1.878 1.456-4.502-.256-6.224-.664-.67-1.432-1.064-2.424-1.246-.64-.118-.776-.118-1.448-.008-1.02.167-1.81.562-2.512 1.256-1.72 1.704-1.832 4.342-.264 6.222l.413.496v.608c0 .336-.027.608-.06.608-.03 0-.264-.16-.512-.36l-.034-.011c-.832-.664-1.568-1.842-1.872-2.997-.184-.698-.184-2.024.008-2.72.504-1.878 1.888-3.335 3.808-4.019.41-.145 1.133-.22 1.814-.211zm-.13 2.99c.31 0 .62.06.844.178.488.253.888.745 1.04 1.259.464 1.578-1.208 2.96-2.72 2.254h-.015c-.712-.331-1.096-.956-1.104-1.77 0-.733.408-1.371 1.112-1.745.224-.117.534-.176.844-.176zm-.011 4.728c.988-.004 1.706.349 1.97.97.198.464.124 1.932-.218 4.302-.232 1.656-.36 2.074-.68 2.356-.44.39-1.064.498-1.656.288h-.003c-.716-.257-.87-.605-1.164-2.644-.341-2.37-.416-3.838-.218-4.302.262-.616.974-.966 1.97-.97z"
-  },
-  snapchat: {
-    viewBox: "0 0 24 24",
-    path: "M12 0C8.74 0 6.06 2.67 6.06 5.96c0 1.6.63 3.26 1.78 4.55.16.18.26.35.25.46-.03.27-.62 1.15-1.25 1.45-.39.19-.94.36-1.52.54-.37.11-.75.22-1.11.35-.6.22-.7.6-.67.88.07.66.92.99 2.49 1.31.6.12 1.27.25 1.38.35.1.62.3 1.29.61 1.89.6 1.2 1.9 1.9 3.87 1.9s3.28-.7 3.88-1.9c.31-.6.5-1.27.6-1.89.11-.1.79-.23 1.39-.35 1.56-.32 2.41-.65 2.49-1.31.03-.28-.07-.66-.67-.88-.36-.13-.74-.24-1.11-.35-.58-.18-1.13-.35-1.52-.54-.63-.3-1.22-1.18-1.25-1.45-.01-.11.09-.28.25-.46 1.15-1.29 1.78-2.95 1.78-4.55C17.94 2.67 15.26 0 12 0z"
   }
 };
 function PlatformIcon({ platform, size = 16, color = "currentColor", ...props }) {
@@ -1051,8 +1047,7 @@ var PROVIDER_TO_PLATFORM = {
   deezer: "deezer",
   tidal: "tidal",
   soundcloud: "soundcloud",
-  "apple podcasts": "applePodcasts",
-  snapchat: "snapchat"
+  "apple podcasts": "applePodcasts"
 };
 var PLATFORM_COLORS = {
   reddit: "#ff4500",
@@ -1081,8 +1076,7 @@ var PLATFORM_COLORS = {
   deezer: "#ef5466",
   tidal: "#000000",
   soundcloud: "#ff5500",
-  applePodcasts: "#a24bdc",
-  snapchat: "#FFFC00"
+  applePodcasts: "#a24bdc"
 };
 function PlatformBranding({
   provider,
@@ -1220,8 +1214,8 @@ function EmbedCard({
   const platformColor = ctaPlatformId ? PLATFORM_COLORS[ctaPlatformId] : void 0;
   const usePlatformButtonColor = Boolean(ctaUsePlatformColor && platformColor);
   const usePlatformIconColor = Boolean(ctaUsePlatformIconColor && platformColor && !usePlatformButtonColor);
-  const ctaIconColor = usePlatformButtonColor ? ctaPlatformId === "snapchat" || ctaPlatformId === "kick" ? "#000000" : "#ffffff" : usePlatformIconColor ? ctaPlatformId === "truthSocial" ? "currentColor" : platformColor : ctaPlatformId === "truthSocial" ? "#000000" : "currentColor";
-  const ctaButtonTextColor = usePlatformButtonColor ? ctaPlatformId === "snapchat" || ctaPlatformId === "kick" ? "#000000" : "#ffffff" : palette2.text;
+  const ctaIconColor = usePlatformButtonColor ? ctaPlatformId === "kick" ? "#000000" : "#ffffff" : usePlatformIconColor ? ctaPlatformId === "truthSocial" ? "currentColor" : platformColor : ctaPlatformId === "truthSocial" ? "#000000" : "currentColor";
+  const ctaButtonTextColor = usePlatformButtonColor ? ctaPlatformId === "kick" ? "#000000" : "#ffffff" : palette2.text;
   const ctaIcon = ctaLabelIcon && ctaPlatformId ? /* @__PURE__ */ jsx6(
     PlatformIcon,
     {
@@ -7412,230 +7406,8 @@ var PinterestEmbed = ({
   );
 };
 
-// src/components/SnapchatEmbed.tsx
-import { useEffect as useEffect18, useRef as useRef4, useState as useState18 } from "react";
-
-// src/utils/snapchat.ts
-var isValidSnapchatUrl = (url) => {
-  return /^https?:\/\/(www\.)?snapchat\.com\/(lens|story|spotlight|add)\/[a-zA-Z0-9_-]+(\/embed)?/.test(url);
-};
-var getSnapchatEmbedUrl = (url) => {
-  if (!isValidSnapchatUrl(url)) return "";
-  if (url.endsWith("/embed")) return url;
-  return `${url}/embed`;
-};
-
-// src/components/SnapchatEmbed.tsx
-import { jsx as jsx27, jsxs as jsxs15 } from "react/jsx-runtime";
-var SnapchatEmbed = ({
-  url,
-  width = "100%",
-  maxWidth,
-  height = 650,
-  className,
-  style,
-  scriptLoad = true,
-  disableCard = false,
-  showCTA = true,
-  ctaLabel = "View on Snapchat",
-  ctaLabelIcon = true,
-  ctaLabelIconPosition = "before",
-  ctaUsePlatformColor = false,
-  ctaUsePlatformIconColor = false,
-  ctaAlignment = "left",
-  theme = "light",
-  embedAlignment = "center",
-  showBranding = true,
-  constrainWidthByEmbed = false,
-  cardLayout
-}) => {
-  const [error, setError] = useState18(null);
-  const containerRef = useRef4(null);
-  const cardHover = getCardHoverStyles(theme);
-  const ctaHover = getCtaHoverStyles(theme);
-  const ctaBaseStyle = getCtaStyle(theme);
-  const ctaIconColor = ctaUsePlatformColor ? "#000000" : ctaUsePlatformIconColor ? PLATFORM_COLORS.snapchat : "currentColor";
-  const resolvedLayout = useCardLayout(cardLayout) ?? "classic";
-  useEffect18(() => {
-    if (!url) {
-      setError("No URL provided");
-      return;
-    }
-    if (!isValidSnapchatUrl(url)) {
-      setError("Invalid Snapchat URL");
-      return;
-    }
-    if (scriptLoad) {
-      const existingScript = document.querySelector('script[src="https://www.snapchat.com/embed.js"]');
-      if (!existingScript) {
-        setTimeout(() => {
-          const script = document.createElement("script");
-          script.async = true;
-          script.src = "https://www.snapchat.com/embed.js";
-          document.body.appendChild(script);
-        }, 50);
-      }
-    }
-  }, [url, scriptLoad]);
-  if (error) {
-    return /* @__PURE__ */ jsx27(
-      EmbedCard,
-      {
-        provider: "Snapchat",
-        status: "error",
-        statusMessage: error,
-        width,
-        maxWidth,
-        className,
-        style,
-        disableCard,
-        showCTA,
-        ctaLabel,
-        ctaLabelIcon,
-        ctaLabelIconPosition,
-        ctaUsePlatformColor,
-        ctaUsePlatformIconColor,
-        theme
-      }
-    );
-  }
-  const embedUrl = getSnapchatEmbedUrl(url);
-  const alignmentStyles = {
-    left: "flex-start",
-    center: "center",
-    right: "flex-end"
-  };
-  const gridAlignment = {
-    left: "start",
-    center: "center",
-    right: "end"
-  };
-  return /* @__PURE__ */ jsx27(
-    "div",
-    {
-      className,
-      style: {
-        width: constrainWidthByEmbed ? "fit-content" : "100%",
-        maxWidth: constrainWidthByEmbed ? width : maxWidth || "100%",
-        display: "grid",
-        ...style
-      },
-      children: /* @__PURE__ */ jsxs15(
-        "div",
-        {
-          style: {
-            ...getCardContainerStyle(theme, disableCard)
-          },
-          onMouseEnter: (e) => {
-            if (disableCard) return;
-            e.currentTarget.style.boxShadow = cardHover.hover.boxShadow;
-            e.currentTarget.style.transform = cardHover.hover.transform;
-          },
-          onMouseLeave: (e) => {
-            if (disableCard) return;
-            e.currentTarget.style.boxShadow = cardHover.rest.boxShadow;
-            e.currentTarget.style.transform = cardHover.rest.transform;
-          },
-          children: [
-            resolvedLayout === "classic" && showBranding && /* @__PURE__ */ jsx27(PlatformBranding, { provider: "Snapchat", theme }),
-            /* @__PURE__ */ jsx27(
-              "div",
-              {
-                style: {
-                  width,
-                  maxWidth,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: alignmentStyles[embedAlignment],
-                  justifySelf: gridAlignment[embedAlignment]
-                },
-                children: /* @__PURE__ */ jsxs15(
-                  "blockquote",
-                  {
-                    className: "snapchat-embed",
-                    "data-snapchat-embed-url": embedUrl,
-                    "data-snapchat-embed-width": typeof width === "number" ? width : void 0,
-                    "data-snapchat-embed-height": typeof height === "number" ? height : void 0,
-                    style: {
-                      background: disableCard ? "transparent" : "#C4C4C4",
-                      border: 0,
-                      borderRadius: disableCard ? 0 : 40,
-                      boxShadow: disableCard ? "none" : "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
-                      margin: 1,
-                      maxWidth: typeof width === "number" ? width : "100%",
-                      minWidth: 326,
-                      padding: 0,
-                      width: "calc(100% - 2px)",
-                      display: "flex",
-                      flexDirection: "column",
-                      position: "relative",
-                      height: typeof height === "number" ? height : 650
-                    },
-                    children: [
-                      /* @__PURE__ */ jsxs15("div", { style: { display: "flex", flexDirection: "row", alignItems: "center" }, children: [
-                        /* @__PURE__ */ jsx27("a", { href: embedUrl, style: { backgroundColor: "#F4F4F4", borderRadius: "50%", flexGrow: 0, height: 40, width: 40, margin: 16, cursor: "pointer" } }),
-                        /* @__PURE__ */ jsx27("div", { style: { display: "flex", flexDirection: "column", flexGrow: 1, justifyContent: "center" } })
-                      ] }),
-                      /* @__PURE__ */ jsx27("div", { style: { flex: 1 } }),
-                      /* @__PURE__ */ jsx27("div", { style: { display: "flex", flexDirection: "row", alignItems: "center", borderEndEndRadius: 40, borderEndStartRadius: 40 }, children: /* @__PURE__ */ jsx27("a", { href: embedUrl, style: { backgroundColor: "yellow", width: "100%", padding: "10px 20px", border: "none", borderRadius: "inherit", cursor: "pointer", textAlign: "center", display: "flex", flexDirection: "row", justifyContent: "center", textDecoration: "none", color: "black" }, children: "View more on Snapchat" }) })
-                    ]
-                  }
-                )
-              }
-            ),
-            resolvedLayout === "modern" && showBranding && /* @__PURE__ */ jsx27(PlatformBranding, { provider: "Snapchat", theme }),
-            showCTA && /* @__PURE__ */ jsxs15(
-              "a",
-              {
-                href: embedUrl,
-                target: "_blank",
-                rel: "noopener noreferrer",
-                style: {
-                  ...ctaBaseStyle,
-                  gap: 8,
-                  justifySelf: ctaAlignment === "center" ? "center" : ctaAlignment === "right" ? "end" : "start",
-                  backgroundColor: ctaUsePlatformColor ? PLATFORM_COLORS.snapchat : ctaBaseStyle.backgroundColor,
-                  borderColor: ctaUsePlatformColor ? PLATFORM_COLORS.snapchat : ctaBaseStyle.borderColor,
-                  color: ctaUsePlatformColor ? "#000000" : ctaBaseStyle.color
-                },
-                onMouseEnter: (e) => {
-                  if (ctaUsePlatformColor) {
-                    e.currentTarget.style.backgroundColor = PLATFORM_COLORS.snapchat;
-                    e.currentTarget.style.borderColor = PLATFORM_COLORS.snapchat;
-                    e.currentTarget.style.color = "#000000";
-                  } else {
-                    e.currentTarget.style.backgroundColor = ctaHover.hover.backgroundColor;
-                    e.currentTarget.style.borderColor = ctaHover.hover.borderColor;
-                  }
-                  e.currentTarget.style.transform = ctaHover.hover.transform;
-                },
-                onMouseLeave: (e) => {
-                  if (ctaUsePlatformColor) {
-                    e.currentTarget.style.backgroundColor = PLATFORM_COLORS.snapchat;
-                    e.currentTarget.style.borderColor = PLATFORM_COLORS.snapchat;
-                    e.currentTarget.style.color = "#000000";
-                  } else {
-                    e.currentTarget.style.backgroundColor = ctaHover.rest.backgroundColor;
-                    e.currentTarget.style.borderColor = ctaHover.rest.borderColor;
-                  }
-                  e.currentTarget.style.transform = ctaHover.rest.transform;
-                },
-                children: [
-                  ctaLabelIconPosition === "before" && ctaLabelIcon && /* @__PURE__ */ jsx27(PlatformIcon, { platform: "snapchat", size: 14, color: ctaIconColor, "aria-hidden": "true", focusable: "false" }),
-                  /* @__PURE__ */ jsx27("span", { children: ctaLabel }),
-                  ctaLabelIconPosition === "after" && ctaLabelIcon && /* @__PURE__ */ jsx27(PlatformIcon, { platform: "snapchat", size: 14, color: ctaIconColor, "aria-hidden": "true", focusable: "false" })
-                ]
-              }
-            )
-          ]
-        }
-      )
-    }
-  );
-};
-
 // src/components/TelegramEmbed.tsx
-import { useEffect as useEffect19, useRef as useRef5, useState as useState19 } from "react";
+import { useEffect as useEffect18, useRef as useRef4, useState as useState18 } from "react";
 
 // src/utils/telegram.ts
 function isValidTelegramUrl(url) {
@@ -7666,7 +7438,7 @@ function extractTelegramPostData(url) {
 }
 
 // src/components/TelegramEmbed.tsx
-import { jsx as jsx28, jsxs as jsxs16 } from "react/jsx-runtime";
+import { jsx as jsx27, jsxs as jsxs15 } from "react/jsx-runtime";
 var TelegramEmbed = ({
   url,
   width = 700,
@@ -7689,16 +7461,16 @@ var TelegramEmbed = ({
   constrainWidthByEmbed = false,
   cardLayout
 }) => {
-  const containerRef = useRef5(null);
-  const [error, setError] = useState19(null);
-  const [loaded, setLoaded] = useState19(false);
+  const containerRef = useRef4(null);
+  const [error, setError] = useState18(null);
+  const [loaded, setLoaded] = useState18(false);
   const themeValue = dark ? "dark" : "light";
   const cardHover = getCardHoverStyles(themeValue);
   const ctaHover = getCtaHoverStyles(themeValue);
   const ctaBaseStyle = getCtaStyle(themeValue);
   const ctaIconColor = ctaUsePlatformColor ? "#ffffff" : ctaUsePlatformIconColor ? PLATFORM_COLORS.telegram : "currentColor";
   const resolvedLayout = useCardLayout(cardLayout) ?? "classic";
-  useEffect19(() => {
+  useEffect18(() => {
     if (!url) {
       setError("No URL provided");
       return;
@@ -7746,7 +7518,7 @@ var TelegramEmbed = ({
     };
   }, [url, accentColor, dark, showComments]);
   if (error) {
-    return /* @__PURE__ */ jsx28(
+    return /* @__PURE__ */ jsx27(
       EmbedCard,
       {
         provider: "Telegram",
@@ -7766,7 +7538,7 @@ var TelegramEmbed = ({
     center: "center",
     right: "flex-end"
   };
-  return /* @__PURE__ */ jsx28(
+  return /* @__PURE__ */ jsx27(
     "div",
     {
       className,
@@ -7776,7 +7548,7 @@ var TelegramEmbed = ({
         display: "grid",
         ...style
       },
-      children: /* @__PURE__ */ jsxs16(
+      children: /* @__PURE__ */ jsxs15(
         "div",
         {
           style: {
@@ -7793,8 +7565,8 @@ var TelegramEmbed = ({
             e.currentTarget.style.transform = cardHover.rest.transform;
           },
           children: [
-            resolvedLayout === "classic" && showBranding && /* @__PURE__ */ jsx28(PlatformBranding, { provider: "Telegram", theme: dark ? "dark" : "light" }),
-            /* @__PURE__ */ jsx28(
+            resolvedLayout === "classic" && showBranding && /* @__PURE__ */ jsx27(PlatformBranding, { provider: "Telegram", theme: dark ? "dark" : "light" }),
+            /* @__PURE__ */ jsx27(
               "div",
               {
                 style: {
@@ -7802,7 +7574,7 @@ var TelegramEmbed = ({
                   display: "flex",
                   justifyContent: alignmentStyles[embedAlignment]
                 },
-                children: /* @__PURE__ */ jsx28(
+                children: /* @__PURE__ */ jsx27(
                   "div",
                   {
                     ref: containerRef,
@@ -7817,8 +7589,8 @@ var TelegramEmbed = ({
                 )
               }
             ),
-            resolvedLayout === "modern" && showBranding && /* @__PURE__ */ jsx28(PlatformBranding, { provider: "Telegram", theme: dark ? "dark" : "light" }),
-            showCTA && /* @__PURE__ */ jsxs16(
+            resolvedLayout === "modern" && showBranding && /* @__PURE__ */ jsx27(PlatformBranding, { provider: "Telegram", theme: dark ? "dark" : "light" }),
+            showCTA && /* @__PURE__ */ jsxs15(
               "a",
               {
                 href: url,
@@ -7855,9 +7627,9 @@ var TelegramEmbed = ({
                   e.currentTarget.style.transform = ctaHover.rest.transform;
                 },
                 children: [
-                  ctaLabelIconPosition === "before" && ctaLabelIcon && /* @__PURE__ */ jsx28(PlatformIcon, { platform: "telegram", size: 14, color: ctaIconColor, "aria-hidden": "true", focusable: "false" }),
-                  /* @__PURE__ */ jsx28("span", { children: ctaLabel }),
-                  ctaLabelIconPosition === "after" && ctaLabelIcon && /* @__PURE__ */ jsx28(PlatformIcon, { platform: "telegram", size: 14, color: ctaIconColor, "aria-hidden": "true", focusable: "false" })
+                  ctaLabelIconPosition === "before" && ctaLabelIcon && /* @__PURE__ */ jsx27(PlatformIcon, { platform: "telegram", size: 14, color: ctaIconColor, "aria-hidden": "true", focusable: "false" }),
+                  /* @__PURE__ */ jsx27("span", { children: ctaLabel }),
+                  ctaLabelIconPosition === "after" && ctaLabelIcon && /* @__PURE__ */ jsx27(PlatformIcon, { platform: "telegram", size: 14, color: ctaIconColor, "aria-hidden": "true", focusable: "false" })
                 ]
               }
             )
@@ -7935,7 +7707,7 @@ function getSpotifyEmbedUrl(url, theme = "light") {
 }
 
 // src/components/SpotifyEmbed.tsx
-import { jsx as jsx29 } from "react/jsx-runtime";
+import { jsx as jsx28 } from "react/jsx-runtime";
 var SPOTIFY_COLOR = "#1DB954";
 var SpotifyEmbed = ({
   url,
@@ -7966,7 +7738,7 @@ var SpotifyEmbed = ({
     return 352;
   }, [height, urlInfo.type]);
   if (!embedUrl) {
-    return /* @__PURE__ */ jsx29(
+    return /* @__PURE__ */ jsx28(
       EmbedCard,
       {
         provider: "Spotify",
@@ -7986,7 +7758,7 @@ var SpotifyEmbed = ({
     );
   }
   const cardMaxWidth = constrainWidthByEmbed ? width : maxWidth;
-  return /* @__PURE__ */ jsx29(
+  return /* @__PURE__ */ jsx28(
     EmbedCard,
     {
       provider: showBranding ? "Spotify" : "",
@@ -8087,7 +7859,7 @@ function getAppleMusicEmbedUrl(url, theme = "light") {
 }
 
 // src/components/AppleMusicEmbed.tsx
-import { jsx as jsx30 } from "react/jsx-runtime";
+import { jsx as jsx29 } from "react/jsx-runtime";
 var APPLE_MUSIC_COLOR = "#fa243c";
 var AppleMusicEmbed = ({
   url,
@@ -8120,7 +7892,7 @@ var AppleMusicEmbed = ({
     return 450;
   }, [height, urlInfo.type]);
   if (!embedUrl) {
-    return /* @__PURE__ */ jsx30(
+    return /* @__PURE__ */ jsx29(
       EmbedCard,
       {
         provider: "Apple Music",
@@ -8140,7 +7912,7 @@ var AppleMusicEmbed = ({
     );
   }
   const cardMaxWidth = constrainWidthByEmbed ? width : maxWidth;
-  return /* @__PURE__ */ jsx30(
+  return /* @__PURE__ */ jsx29(
     EmbedCard,
     {
       provider: showBranding ? "Apple Music" : "",
@@ -8230,7 +8002,7 @@ function getDeezerEmbedUrl(url, theme = "light") {
 }
 
 // src/components/DeezerEmbed.tsx
-import { jsx as jsx31 } from "react/jsx-runtime";
+import { jsx as jsx30 } from "react/jsx-runtime";
 var DEEZER_COLOR = "#ef5466";
 var DeezerEmbed = ({
   url,
@@ -8262,7 +8034,7 @@ var DeezerEmbed = ({
     return 300;
   }, [height, urlInfo.type]);
   if (!embedUrl) {
-    return /* @__PURE__ */ jsx31(
+    return /* @__PURE__ */ jsx30(
       EmbedCard,
       {
         provider: "Deezer",
@@ -8282,7 +8054,7 @@ var DeezerEmbed = ({
     );
   }
   const cardMaxWidth = constrainWidthByEmbed ? width : maxWidth;
-  return /* @__PURE__ */ jsx31(
+  return /* @__PURE__ */ jsx30(
     EmbedCard,
     {
       provider: showBranding ? "Deezer" : "",
@@ -8372,7 +8144,7 @@ function getTidalEmbedUrl(url) {
 }
 
 // src/components/TidalEmbed.tsx
-import { jsx as jsx32 } from "react/jsx-runtime";
+import { jsx as jsx31 } from "react/jsx-runtime";
 var TIDAL_COLOR = "#000000";
 var TidalEmbed = ({
   url,
@@ -8405,7 +8177,7 @@ var TidalEmbed = ({
   }, [height, urlInfo.type]);
   const mediaAspectRatio = urlInfo.type === "video" ? "16/9" : void 0;
   if (!embedUrl) {
-    return /* @__PURE__ */ jsx32(
+    return /* @__PURE__ */ jsx31(
       EmbedCard,
       {
         provider: "Tidal",
@@ -8425,7 +8197,7 @@ var TidalEmbed = ({
     );
   }
   const cardMaxWidth = constrainWidthByEmbed ? width : maxWidth;
-  return /* @__PURE__ */ jsx32(
+  return /* @__PURE__ */ jsx31(
     EmbedCard,
     {
       provider: showBranding ? "Tidal" : "",
@@ -8507,7 +8279,7 @@ function getSoundCloudEmbedUrl(url, options) {
 }
 
 // src/components/SoundCloudEmbed.tsx
-import { jsx as jsx33 } from "react/jsx-runtime";
+import { jsx as jsx32 } from "react/jsx-runtime";
 var SOUNDCLOUD_COLOR = "#ff5500";
 var SoundCloudEmbed = ({
   url,
@@ -8542,7 +8314,7 @@ var SoundCloudEmbed = ({
     return 166;
   }, [height, urlInfo.type]);
   if (!embedUrl) {
-    return /* @__PURE__ */ jsx33(
+    return /* @__PURE__ */ jsx32(
       EmbedCard,
       {
         provider: "SoundCloud",
@@ -8562,7 +8334,7 @@ var SoundCloudEmbed = ({
     );
   }
   const cardMaxWidth = constrainWidthByEmbed ? width : maxWidth;
-  return /* @__PURE__ */ jsx33(
+  return /* @__PURE__ */ jsx32(
     EmbedCard,
     {
       provider: showBranding ? "SoundCloud" : "",
@@ -8653,7 +8425,7 @@ function getApplePodcastsEmbedUrl(url, theme = "light") {
 }
 
 // src/components/ApplePodcastsEmbed.tsx
-import { jsx as jsx34 } from "react/jsx-runtime";
+import { jsx as jsx33 } from "react/jsx-runtime";
 var APPLE_PODCASTS_COLOR = "#a24bdc";
 var ApplePodcastsEmbed = ({
   url,
@@ -8684,7 +8456,7 @@ var ApplePodcastsEmbed = ({
     return 450;
   }, [height, urlInfo.type]);
   if (!embedUrl) {
-    return /* @__PURE__ */ jsx34(
+    return /* @__PURE__ */ jsx33(
       EmbedCard,
       {
         provider: "Apple Podcasts",
@@ -8704,7 +8476,7 @@ var ApplePodcastsEmbed = ({
     );
   }
   const cardMaxWidth = constrainWidthByEmbed ? width : maxWidth;
-  return /* @__PURE__ */ jsx34(
+  return /* @__PURE__ */ jsx33(
     EmbedCard,
     {
       provider: showBranding ? "Apple Podcasts" : "",
@@ -8757,7 +8529,6 @@ export {
   PlatformIcon,
   RedditEmbed,
   RumbleEmbed,
-  SnapchatEmbed,
   SoundCloudEmbed,
   SpotifyEmbed,
   TelegramEmbed,

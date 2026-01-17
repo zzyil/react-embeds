@@ -70,8 +70,7 @@ export const DEFAULT_CTA_LABELS: Record<string, string> = {
   tidal: "Listen on Tidal",
   soundcloud: "Listen on SoundCloud",
   applePodcasts: "Listen on Apple Podcasts",
-  telegram: "View on Telegram",
-  snapchat: "View on Snapchat"
+  telegram: "View on Telegram"
 };
 
 export const createDefaultRecord = <T extends string | boolean>(
@@ -115,8 +114,7 @@ export const PLATFORM_DEFAULT_LAYOUTS: Record<string, "classic" | "modern"> = {
   tidal: "classic",
   soundcloud: "classic",
   applePodcasts: "classic",
-  telegram: "classic",
-  snapchat: "classic"
+  telegram: "classic"
 };
 
 Object.entries(PLATFORM_DEFAULT_LAYOUTS).forEach(([platform, layout]) => {

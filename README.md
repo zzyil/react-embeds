@@ -60,7 +60,6 @@ function App() {
 | `RedditEmbed` | Reddit |
 | `TumblrEmbed` | Tumblr |
 | `PinterestEmbed` | Pinterest |
-| `SnapchatEmbed` | Snapchat |
 | `TelegramEmbed` | Telegram |
 
 ### Video

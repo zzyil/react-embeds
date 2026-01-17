@@ -1,18 +1,13 @@
 self.__BUILD_MANIFEST = {
   "/": [
-    "static/chunks/9f0923ca9477de45.js"
+    "static/chunks/57636ced259ccfd5.js"
   ],
   "/_error": [
-    "static/chunks/c49ded4c33a708d1.js"
+    "static/chunks/36cf21af0c667034.js"
   ],
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [
-      {
-        "source": "/react-embeds//_next/:path+",
-        "destination": "/react-embeds/_next/:path+"
-      }
-    ],
+    "beforeFiles": [],
     "fallback": []
   },
   "sortedPages": [

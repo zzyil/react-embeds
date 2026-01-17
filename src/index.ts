@@ -57,8 +57,6 @@ export type { TumblrEmbedProps } from "./components/TumblrEmbed";
 
 export { PinterestEmbed } from "./components/PinterestEmbed";
 export type { PinterestEmbedProps } from "./components/PinterestEmbed";
-export { SnapchatEmbed } from "./components/SnapchatEmbed";
-export type { SnapchatEmbedProps } from "./components/SnapchatEmbed";
 export { TelegramEmbed } from "./components/TelegramEmbed";
 export type { TelegramEmbedProps } from "./components/TelegramEmbed";
 

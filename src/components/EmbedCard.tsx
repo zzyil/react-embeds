@@ -247,14 +247,14 @@ export function EmbedCard({
   const usePlatformButtonColor = Boolean(ctaUsePlatformColor && platformColor);
   const usePlatformIconColor = Boolean(ctaUsePlatformIconColor && platformColor && !usePlatformButtonColor);
   const ctaIconColor = usePlatformButtonColor
-    ? ctaPlatformId === "snapchat" || ctaPlatformId === "kick" ? "#000000" : "#ffffff"
+    ? ctaPlatformId === "kick" ? "#000000" : "#ffffff"
     : usePlatformIconColor
       ? ctaPlatformId === "truthSocial" ? "currentColor" : platformColor
       : ctaPlatformId === "truthSocial"
         ? "#000000"
         : "currentColor";
   const ctaButtonTextColor = usePlatformButtonColor
-    ? ctaPlatformId === "snapchat" || ctaPlatformId === "kick" ? "#000000" : "#ffffff"
+    ? ctaPlatformId === "kick" ? "#000000" : "#ffffff"
     : palette.text;
   const ctaIcon = ctaLabelIcon && ctaPlatformId ? (
     <PlatformIcon
