@@ -1,6 +1,11 @@
-# react-embeds
+# react-social-embeds
+
+[![npm version](https://img.shields.io/npm/v/react-social-embeds.svg)](https://www.npmjs.com/package/react-social-embeds)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Unified React components for embedding social media and streaming content. One component per platform with consistent styling, theming, and TypeScript support.
+
+**[📺 Live Demo](https://zzyil.github.io/react-embeds/)** | **[📦 npm](https://www.npmjs.com/package/react-social-embeds)**
 
 ## Installation
 
@@ -26,7 +31,7 @@ npm install hls.js dashjs
 ## Quick Start
 
 ```tsx
-import { YouTubeEmbed, XEmbed, SpotifyEmbed } from "react-embeds";
+import { YouTubeEmbed, XEmbed, SpotifyEmbed } from "react-social-embeds";
 
 function App() {
   return (
@@ -107,7 +112,7 @@ interface CommonProps {
 Base component used by all embeds. Use directly for custom embeds:
 
 ```tsx
-import { EmbedCard } from "react-embeds";
+import { EmbedCard } from "react-social-embeds";
 
 <EmbedCard
   provider="Custom"
@@ -125,7 +130,7 @@ import { EmbedCard } from "react-embeds";
 Custom video player with HLS/DASH support:
 
 ```tsx
-import { MediaPlayer } from "react-embeds";
+import { MediaPlayer } from "react-social-embeds";
 
 <MediaPlayer
   src="https://example.com/stream.m3u8"
@@ -161,7 +166,7 @@ Use CSS variables for custom styling:
 Control layout with the `CardLayoutProvider`:
 
 ```tsx
-import { CardLayoutProvider, YouTubeEmbed } from "react-embeds";
+import { CardLayoutProvider, YouTubeEmbed } from "react-social-embeds";
 
 <CardLayoutProvider layout="modern">
   <YouTubeEmbed url={url} />
@@ -175,8 +180,8 @@ Layouts: `"classic"` (metadata first) | `"modern"` (media first)
 All components export their prop types:
 
 ```tsx
-import { YouTubeEmbed, YouTubeEmbedProps } from "react-embeds";
-import { EmbedCardProps, MediaPlayerProps } from "react-embeds";
+import { YouTubeEmbed, YouTubeEmbedProps } from "react-social-embeds";
+import { EmbedCardProps, MediaPlayerProps } from "react-social-embeds";
 ```
 
 ## License
