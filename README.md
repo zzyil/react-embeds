@@ -5,7 +5,7 @@ Unified React components for embedding social media and streaming content. One c
 ## Installation
 
 ```bash
-npm install react-embeds
+npm install react-social-embeds
 ```
 
 ### Peer Dependencies

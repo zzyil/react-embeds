@@ -1,5 +1,5 @@
 {
-  "name": "react-embeds",
+  "name": "react-social-embeds",
   "version": "1.0.0",
   "description": "Unified React embeds for social media content",
   "main": "dist/index.js",
