@@ -7,9 +7,9 @@
 
 Unified React components for embedding social media and streaming content. One component per platform with consistent styling, theming, and TypeScript support.
 
-<a href="https://zzyil.github.io/react-embeds/" target="_blank" rel="noreferrer">▶️ Live Demo</a> | <a href="https://www.npmjs.com/package/react-social-embeds" target="_blank" rel="noreferrer">📦 npm</a> | <a href="https://github.com/zzyil/react-embeds" target="_blank" rel="noreferrer">⛓️‍💥 GitHub Repo</a>  
+**[▶️ Live Demo](https://zzyil.github.io/react-embeds/)** | **[📦 npm](https://www.npmjs.com/package/react-social-embeds)** | **[⛓️‍💥 GitHub Repo](https://github.com/zzyil/react-embeds)**  
 
-### <a href="https://x.com/listentovv" target="_blank" rel="noreferrer">Follow me on 𝕏</a>  
+### [Follow me on 𝕏](https://x.com/listentovv)  
 
 ## Installation
 
