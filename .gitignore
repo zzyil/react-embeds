@@ -1,0 +1,5 @@
+node_modules
+.next
+demo/certificates/localhost-key.pem
+demo/certificates/localhost.pem
+private

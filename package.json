@@ -1,0 +1,49 @@
+{
+  "name": "react-embeds",
+  "version": "1.0.0",
+  "description": "Unified React embeds for social media content",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --external react --external react-dom --external dashjs --external hls.js",
+    "dev": "tsup src/index.ts --dts --format esm,cjs --watch --external dashjs --external hls.js",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "release:check": "npm run lint && npm test && npm run build"
+  },
+  "peerDependencies": {
+    "dashjs": ">=4.0.0",
+    "hls.js": ">=1.0.0",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "dashjs": {
+      "optional": true
+    },
+    "hls.js": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^14.2.2",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitest/coverage-v8": "^2.0.5",
+    "dashjs": "^4.7.4",
+    "hls.js": "^1.5.0",
+    "tsup": "^8.2.0",
+    "typescript": "^5.5.3",
+    "jsdom": "^24.1.0",
+    "vitest": "^2.0.5"
+  }
+}
