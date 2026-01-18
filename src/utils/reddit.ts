@@ -86,10 +86,23 @@ export function extractSubredditFromUrl(rawUrl: string): string {
 export function pickRedditMedia(post: Record<string, unknown>): RedditMedia | undefined {
   // Prefer Reddit-hosted videos
   const secureMedia = post.secure_media as
-    | { reddit_video?: { fallback_url?: string; preview_url?: string; poster_url?: string } }
+    | {
+      reddit_video?: {
+        dash_url?: string;
+        fallback_url?: string;
+        preview_url?: string;
+        poster_url?: string;
+        hls_url?: string;
+      }
+    }
     | undefined;
   const redditVideo = secureMedia?.reddit_video;
+
+  // Prefer dash_url (DASH manifest with audio) over fallback_url (video-only)
+  // Falls back to fallback_url if dash_url is not available
   const videoUrl =
+    (redditVideo?.dash_url as string | undefined) ||
+    (redditVideo?.hls_url as string | undefined) ||
     (redditVideo?.fallback_url as string | undefined) ||
     (redditVideo?.preview_url as string | undefined);
 

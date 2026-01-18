@@ -1892,7 +1892,7 @@ function extractSubredditFromUrl(rawUrl) {
 function pickRedditMedia(post) {
   const secureMedia = post.secure_media;
   const redditVideo = secureMedia?.reddit_video;
-  const videoUrl = redditVideo?.fallback_url || redditVideo?.preview_url;
+  const videoUrl = redditVideo?.dash_url || redditVideo?.hls_url || redditVideo?.fallback_url || redditVideo?.preview_url;
   if (videoUrl) {
     return {
       type: "video",
