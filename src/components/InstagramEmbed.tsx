@@ -171,7 +171,6 @@ export function InstagramEmbed({
             display: "block",
             borderRadius: disableCard ? undefined : 8
           }}
-          allowTransparency={true}
           allow="encrypted-media"
           title="Instagram post"
         />
