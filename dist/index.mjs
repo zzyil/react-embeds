@@ -103,7 +103,8 @@ function MediaPlayer(props) {
     }
     video._savedState = null;
     if (streamingType === "dash") {
-      import("dashjs").then(({ default: dashjs }) => {
+      import("dashjs").then((dashjsModule) => {
+        const dashjs = dashjsModule.default || dashjsModule;
         const player = dashjs.MediaPlayer().create();
         player.on("error", (e) => {
           console.error("[MediaPlayer] DASH player error:", e);
@@ -126,7 +127,8 @@ function MediaPlayer(props) {
         video.src = src;
       });
     } else if (streamingType === "hls") {
-      import("hls.js").then(({ default: Hls }) => {
+      import("hls.js").then((hlsModule) => {
+        const Hls = hlsModule.default || hlsModule;
         if (Hls.isSupported()) {
           const hls = new Hls();
           hls.loadSource(src);

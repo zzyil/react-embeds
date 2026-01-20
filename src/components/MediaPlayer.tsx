@@ -137,7 +137,9 @@ export function MediaPlayer(props: MediaPlayerProps): JSX.Element {
     if (streamingType === "dash") {
       // Dynamic import for optional dependency
       import("dashjs")
-        .then(({ default: dashjs }) => {
+        .then((dashjsModule) => {
+          // Handle both ESM (default export) and CJS module structures
+          const dashjs = dashjsModule.default || dashjsModule;
           const player = dashjs.MediaPlayer().create();
 
           player.on("error", (e: any) => {
@@ -169,7 +171,9 @@ export function MediaPlayer(props: MediaPlayerProps): JSX.Element {
     } else if (streamingType === "hls") {
       // Dynamic import for optional dependency
       import("hls.js")
-        .then(({ default: Hls }) => {
+        .then((hlsModule) => {
+          // Handle both ESM (default export) and CJS module structures
+          const Hls = hlsModule.default || hlsModule;
           if (Hls.isSupported()) {
             const hls = new Hls();
             hls.loadSource(src);
