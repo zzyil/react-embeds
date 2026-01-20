@@ -2758,7 +2758,6 @@ function InstagramEmbed({
                   display: "block",
                   borderRadius: disableCard ? void 0 : 8
                 },
-                allowTransparency: true,
                 allow: "encrypted-media",
                 title: "Instagram post"
               }
